@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
@@ -31,7 +31,6 @@ return new class extends Migration
             $table->boolean('is_negotiable')->default(true);
             $table->decimal('original_price', 10, 2)->nullable();
             $table->string('meetup_location')->nullable();
-            $table->boolean('active_status')->default(0);
             $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });
